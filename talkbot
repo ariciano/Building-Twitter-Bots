@@ -22,7 +22,7 @@ var from = eventMsg.user.screen_name;
 
 console.log(replyto + '' + from);
 
-if (replyto === 'DigiActivist') {
+if (replyto === 'YOURSCREENNAME') {
   var replyTest = replies[Math.floor(Math.random()*replies.length)];
   //var replyText = '@' + from + ' ' + replyTest;
 
