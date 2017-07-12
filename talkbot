@@ -1,61 +1,53 @@
-console.log("testing 123");
+console.log('bot is running')
+
 var Twit = require('twit');
 var config = require('./config');
 var T = new Twit(config);
 
-
 var replies = [ 'fact one','fact two','fact three','fact four','fact five'];
 
-
-
-
-
-
-
-// Setting up a user stream
 var stream = T.stream('user');
 
-// Now looking for tweet events
-// See: https://dev.twitter.com/streaming/userstreams
+//'follow' could be retweet, like, etc
 stream.on('tweet', tweetEvent);
 
-// Here a tweet event is triggered!
-function tweetEvent(tweet) {
+function tweetEvent (eventMsg) {
+  // var fs = require ('fs');
+  // var json = JSON.stringify(eventMsg,null,2);
+  // fs.writeFile("tweet.json", json );
 
-  // If we wanted to write a file out
-  // to look more closely at the data
-  // var fs = require('fs');
-  // var json = JSON.stringify(tweet,null,2);
-  // fs.writeFile("tweet.json", json, output);
+var replyto = eventMsg.in_reply_to_screen_name;
+var text = eventMsg.text;
+var from = eventMsg.user.screen_name;
 
-  // Who is this in reply to?
-  var reply_to = tweet.in_reply_to_screen_name;
-  // Who sent the tweet?
-  var name = tweet.user.screen_name;
-  // What is the text?
-  var txt = tweet.text;
-  // If we want the conversation thread
-  var id = tweet.id_str;
+console.log(replyto + '' + from);
 
-  // Ok, if this was in reply to me
-  // Tweets by me show up here too
-  if (reply_to === 'YOUR SCREEN NAME') {
-    var replyTest = replies[Math.floor(Math.random()*replies.length)];
-    var replyText = '@' + name + ' ' + replyTest;
+if (replyto === 'DigiActivist') {
+  var replyTest = replies[Math.floor(Math.random()*replies.length)];
+  //var replyText = '@' + from + ' ' + replyTest;
 
-    // Post that tweet
-     T.post('statuses/update', { status: replyText, in_reply_to_status_id: id}, tweeted);
-    console.log('An at mention from' + name);
-
-
-    // Make sure it worked!
-    function tweeted(err, reply) {
-      if (err) {
-        console.log(err.message);
-      } else {
-        console.log('Tweeted: ' + reply.text);
-        //T.post('statuses/update', { status: replyText, in_reply_to_status_id: id}, tweeted);
-      }
-    }
-  }
+  var newtweet = '@' + from + ' ' + replyTest;
+  tweetIt(newtweet);
 }
+}
+
+tweetIt();
+
+function tweetIt(txt) {
+
+  var tweet = {
+      status: txt
+    }
+
+    T.post('statuses/update',tweet,tweeted);
+
+    function tweeted(err, data, response) {
+      if (err) {
+        console.log("Something went wrong!")
+      } else {
+        console.log("It worked!");
+      }
+
+    }
+}
+
