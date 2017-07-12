@@ -1,0 +1,47 @@
+console.log('bot is running')
+
+var Twit = require('twit');
+var config = require('./config');
+var T = new Twit(config);
+
+var facts = [ 'fact one.',
+'fact two.',
+'face three.',
+'fact four?',
+'fact five',
+'fact six'];
+
+// var stream = T.stream('user')
+//
+// stream.on('tweet', tweetEvent);
+//
+// function tweetEvent(tweet) {
+//
+// var txt = tweet.text;
+
+
+//1000 is 1 second * 60(per minute) * 5(per 5 minutes)
+setInterval(tweetIt, 1000*20)
+
+
+tweetIt();
+
+function tweetIt() {
+
+  var r = Math.floor(Math.random()*100);
+  var tweet = {
+    status: facts[Math.floor(Math.random()*facts.length)]
+    //status: txt
+    }
+
+    T.post('statuses/update',tweet,tweeted);
+
+    function tweeted(err, data, response) {
+      if (err) {
+        console.log("Something went wrong!")
+      } else {
+        console.log("It worked!");
+      }
+
+    }
+}
