@@ -1,0 +1,61 @@
+console.log("testing 123");
+var Twit = require('twit');
+var config = require('./config');
+var T = new Twit(config);
+
+
+var replies = [ 'fact one','fact two','fact three','fact four','fact five'];
+
+
+
+
+
+
+
+// Setting up a user stream
+var stream = T.stream('user');
+
+// Now looking for tweet events
+// See: https://dev.twitter.com/streaming/userstreams
+stream.on('tweet', tweetEvent);
+
+// Here a tweet event is triggered!
+function tweetEvent(tweet) {
+
+  // If we wanted to write a file out
+  // to look more closely at the data
+  // var fs = require('fs');
+  // var json = JSON.stringify(tweet,null,2);
+  // fs.writeFile("tweet.json", json, output);
+
+  // Who is this in reply to?
+  var reply_to = tweet.in_reply_to_screen_name;
+  // Who sent the tweet?
+  var name = tweet.user.screen_name;
+  // What is the text?
+  var txt = tweet.text;
+  // If we want the conversation thread
+  var id = tweet.id_str;
+
+  // Ok, if this was in reply to me
+  // Tweets by me show up here too
+  if (reply_to === 'YOUR SCREEN NAME') {
+    var replyTest = replies[Math.floor(Math.random()*replies.length)];
+    var replyText = '@' + name + ' ' + replyTest;
+
+    // Post that tweet
+     T.post('statuses/update', { status: replyText, in_reply_to_status_id: id}, tweeted);
+    console.log('An at mention from' + name);
+
+
+    // Make sure it worked!
+    function tweeted(err, reply) {
+      if (err) {
+        console.log(err.message);
+      } else {
+        console.log('Tweeted: ' + reply.text);
+        //T.post('statuses/update', { status: replyText, in_reply_to_status_id: id}, tweeted);
+      }
+    }
+  }
+}
