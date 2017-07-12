@@ -26,7 +26,7 @@ if (replyto === 'DigiActivist') {
   var replyTest = replies[Math.floor(Math.random()*replies.length)];
   //var replyText = '@' + from + ' ' + replyTest;
 
-  var newtweet = '@' + from + ' ' + replyTest;
+  var newtweet = '@' + from + '  ' + replyTest;
   tweetIt(newtweet);
 }
 }
