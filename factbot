@@ -4,9 +4,19 @@ var config = require('./config');
 var T = new Twit(config);
 
 
-var facts = [ 'fact one',
-'fact two',
-'fact three',
+var facts = [ 'Bro, you got this.',
+'Dude, change will not come if we wait for someone else. We are the ones weve been waiting for. We are the change that we seek, bro.',
+'Its like I always say, man. If youre walking down the right path and youre willing to keep walking, eventually youll make progress.',
+'Man, money is not the only answer, but it sure makes a difference, huh?',
+'Like I always say, we need to internalize this idea of excellence. Not many folks spend a lot of time trying to be excellent',
+'Hey, nothing in life thats worth anything is easy. You hear me?',
+'They want to drive fancy cars and wear nice clothes but not work hard to accomplish these things...Dont have that poverty of ambition, man',
+'Bro, If we arent willing to pay a price for our values then we should ask ourselves whether we truly believe in them at all, you know?',
+'Hey, the best way to not feel hopeless is to get up and do something.',
+'Well its like I always say: peace is not merely the absence of visible conflict, right?',
+'Bro, cynicism is just a sorry kind of wisdom.',
+'Well, what makes a man is not the ability to have a child but having the courage to raise one. And that is real, brother',
+'Believe me when I say that where you are right now does not have to determine where you end up.',
 ''];
 
 // var stream = T.stream('user')
