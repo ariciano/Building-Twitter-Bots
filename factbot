@@ -1,8 +1,10 @@
-console.log('bot is running')
 
+
+console.log('bot is running')
 var Twit = require('twit');
 var config = require('./config');
 var T = new Twit(config);
+
 
 var facts = [ 'fact one.',
 'fact two.',
@@ -45,3 +47,4 @@ function tweetIt() {
 
     }
 }
+
