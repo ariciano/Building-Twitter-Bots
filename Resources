@@ -1,3 +1,25 @@
+
+To download for terminal
+
+1. Install Git
+git —version (shows what version or prompts you to download)
+https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+
+2. Download Node.js
+https://nodejs.org/en/
+
+To continue developing in the future
+3. Create Heroku account
+https://signup.heroku.com/
+
+
+Another TwitterBot Guide:
+https://github.com/ttezel/twit
+
+Twitter API doc:
+https://developer.twitter.com/en/docs/tutorials/consuming-streaming-data#track
+
+
 Where to look for social justice statistics
 
 
