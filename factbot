@@ -20,7 +20,7 @@ var facts = [ 'fact one',
 
 
 //1000 is 1 second * 60(per minute) * 5(per 5 minutes)
-setInterval(tweeter, 30000);
+setInterval(tweetIt, 30000);
 
 
 tweetIt();
