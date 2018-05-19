@@ -1,17 +1,13 @@
-
-
 console.log('bot is running')
 var Twit = require('twit');
 var config = require('./config');
 var T = new Twit(config);
 
 
-var facts = [ 'fact one.',
-'fact two.',
-'face three.',
-'fact four?',
-'fact five',
-'fact six'];
+var facts = [ 'fact one',
+'fact two',
+'fact three',
+''];
 
 // var stream = T.stream('user')
 //
@@ -47,4 +43,3 @@ function tweetIt() {
 
     }
 }
-
